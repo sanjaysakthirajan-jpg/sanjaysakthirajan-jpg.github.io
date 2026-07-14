@@ -119,6 +119,18 @@ h1 {
   color: var(--line-dim);
   margin-top: 4px;
 }
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.7); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.stat-num.pop { animation: popIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+.stat-num.pop:nth-of-type(1) { animation-delay: 0.05s; }
+.stats > div:nth-child(1) .stat-num { animation-delay: 0.1s; }
+.stats > div:nth-child(2) .stat-num { animation-delay: 0.25s; }
+.stats > div:nth-child(3) .stat-num { animation-delay: 0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .stat-num.pop { animation: none; }
+}
 
 .sec-label {
   font-family: 'JetBrains Mono', monospace;
@@ -163,6 +175,34 @@ h1 {
   margin-bottom: 6px;
 }
 .spec-row dd { font-size: 15px; color: var(--ink); }
+
+/* SKILLS */
+.skills { padding: 80px 0; border-bottom: 1px solid var(--line-dim); }
+.skills .sec-label { color: var(--amber); }
+.skills h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(26px, 3.6vw, 34px);
+  font-weight: 700;
+  margin-bottom: 36px;
+}
+.skill-group { margin-bottom: 28px; }
+.skill-group-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.skill-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  padding: 8px 14px;
+  border: 1px solid var(--line-dim);
+  color: var(--line);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.skill-badge:hover { border-color: var(--amber); background: rgba(232,163,61,0.08); }
 
 .projects { padding: 100px 0; position: relative; }
 .projects .sec-label { color: var(--teal); }
@@ -221,6 +261,13 @@ h1 {
   color: var(--line-dim);
   margin-bottom: 20px;
 }
+.card p.metric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--amber);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
 .stack {
   display: flex;
   flex-wrap: wrap;
@@ -243,6 +290,9 @@ h1 {
   gap: 6px;
 }
 .card-link:hover { color: var(--line); }
+.card-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.card-link.demo { color: var(--amber); }
+.card-link.demo:hover { color: var(--line); }
 
 .contact {
   padding: 100px 0 60px;
@@ -313,19 +363,20 @@ footer {
     </p>
     <div class="hero-cta">
       <a class="btn filled" href="#projects">View projects</a>
+      <a class="btn" href="sanjay-sakthirajan-resume.pdf" download>Download résumé</a>
       <a class="btn" href="mailto:sanjaysakthirajan@gmail.com">Get in touch</a>
     </div>
     <div class="stats">
       <div>
-        <div class="stat-num" data-count="4">0</div>
+        <div class="stat-num pop">4</div>
         <div class="stat-label">PROJECTS SHIPPED</div>
       </div>
       <div>
-        <div class="stat-num" data-count="3">0</div>
+        <div class="stat-num pop">3</div>
         <div class="stat-label">DOMAINS — ML / AI / OPS ANALYTICS</div>
       </div>
       <div>
-        <div class="stat-num" data-count="1">0</div>
+        <div class="stat-num pop">1</div>
         <div class="stat-label">MASTER'S IN PROGRESS</div>
       </div>
     </div>
@@ -368,7 +419,62 @@ footer {
         <dt>SEEKING</dt>
         <dd>Data Analyst / Applied ML &amp; AI roles</dd>
       </div>
+      <div class="spec-row">
+        <dt>CERTIFICATION</dt>
+        <dd><a href="https://www.credly.com/badges/d338d503-b46b-4636-b1db-50904b5c94dc/public_url" target="_blank" rel="noopener" style="color:#9A6B2A; text-decoration:underline;">AWS Certified Cloud Practitioner →</a></dd>
+      </div>
     </dl>
+  </div>
+</section>
+
+<section class="skills reveal">
+  <div class="wrap">
+    <div class="sec-label">// SKILLS</div>
+    <h2>Tools I reach for.</h2>
+
+    <div class="skill-group">
+      <div class="skill-group-label">LANGUAGES &amp; CORE</div>
+      <div class="skill-badges">
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">R</span>
+        <span class="skill-badge">SQL Databases</span>
+        <span class="skill-badge">MATLAB</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">DATA &amp; ML</div>
+      <div class="skill-badges">
+        <span class="skill-badge">Machine Learning</span>
+        <span class="skill-badge">pandas</span>
+        <span class="skill-badge">NumPy</span>
+        <span class="skill-badge">scikit-learn</span>
+        <span class="skill-badge">Matplotlib</span>
+        <span class="skill-badge">Data Cleaning</span>
+        <span class="skill-badge">Exploratory Data Analysis</span>
+        <span class="skill-badge">Statistical Analysis</span>
+        <span class="skill-badge">Regression Analysis</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">VISUALIZATION &amp; BI</div>
+      <div class="skill-badges">
+        <span class="skill-badge">Power BI</span>
+        <span class="skill-badge">Microsoft Excel</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">DEV &amp; CLOUD</div>
+      <div class="skill-badges">
+        <span class="skill-badge">Git</span>
+        <span class="skill-badge">GitHub</span>
+        <span class="skill-badge">Jupyter Notebook</span>
+        <span class="skill-badge">PyCharm</span>
+        <span class="skill-badge">AWS</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -384,59 +490,70 @@ footer {
         <div class="br"></div>
         <div class="card-tag">SPEC — 01 / LLM &amp; STRUCTURED EXTRACTION</div>
         <h3>Invoice Data Extractor</h3>
+        <div class="stack">
+          <span>Python</span><span>Claude API</span><span>Pydantic</span><span>MySQL</span><span>Streamlit</span>
+        </div>
         <p>
           Schema-driven document extraction using Claude's tool-calling API — pulls vendor,
           dates, line items, and totals from invoices (text or PDF) into clean structured data,
           with a measured evaluation harness instead of eyeballed accuracy.
         </p>
-        <div class="stack">
-          <span>Python</span><span>Claude API</span><span>Pydantic</span><span>MySQL</span><span>Streamlit</span>
+        <p class="metric">100% field-level accuracy on evaluation set · Supports text &amp; PDF input</p>
+        <div class="card-links">
+          <a class="card-link" href="https://github.com/sanjaysakthirajan-jpg/invoice-data-extractor" target="_blank" rel="noopener">View on GitHub →</a>
+          <a class="card-link demo" href="https://invoice-data-extractor-jvwbhpzzknp7pb9uchvirl.streamlit.app" target="_blank" rel="noopener">Live demo →</a>
         </div>
-        <a class="card-link" href="https://github.com/sanjaysakthirajan-jpg/invoice-data-extractor" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
 
       <div class="card reveal">
         <div class="br"></div>
         <div class="card-tag">SPEC — 02 / MACHINE LEARNING</div>
         <h3>NBA Championship Predictor</h3>
+        <div class="stack">
+          <span>Python</span><span>NBA API</span><span>MySQL</span><span>Random Forest</span><span>Streamlit</span>
+        </div>
         <p>
           End-to-end ML pipeline predicting NBA championship probability from 25 seasons of team
           statistics — NBA API data collection, MySQL storage, engineered basketball metrics, and
           a Random Forest model, deployed as an interactive Streamlit app.
         </p>
-        <div class="stack">
-          <span>Python</span><span>NBA API</span><span>MySQL</span><span>Random Forest</span><span>Streamlit</span>
+        <p class="metric">25 seasons analyzed (2000-01 to 2024-25) · Random Forest was the top-performing model · correctly predicted the #1-ranked team to win the 2025-26 finals</p>
+        <div class="card-links">
+          <a class="card-link" href="https://github.com/sanjaysakthirajan-jpg/NBA_Championship_Predictor" target="_blank" rel="noopener">View on GitHub →</a>
+          <a class="card-link demo" href="https://nba-championship-predictor.streamlit.app" target="_blank" rel="noopener">Live demo →</a>
         </div>
-        <a class="card-link" href="https://github.com/sanjaysakthirajan-jpg/NBA_Championship_Predictor" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
 
       <div class="card reveal">
         <div class="br"></div>
         <div class="card-tag">SPEC — 03 / NLP &amp; RECOMMENDATION</div>
         <h3>Netflix Recommender Webapp</h3>
+        <div class="stack">
+          <span>Python</span><span>TF-IDF</span><span>scikit-learn</span><span>Cosine Similarity</span><span>Streamlit</span>
+        </div>
         <p>
           Content-based recommendation system suggesting similar Netflix titles by vectorizing
-          director, cast, genre, and description with CountVectorizer, then ranking by cosine
+          director, cast, genre, and description using TF-IDF, then ranking by cosine
           similarity — served through an interactive Streamlit interface.
         </p>
-        <div class="stack">
-          <span>Python</span><span>NLP</span><span>scikit-learn</span><span>Cosine Similarity</span><span>Streamlit</span>
+        <div class="card-links">
+          <a class="card-link" href="https://github.com/sanjaysakthirajan-jpg/netflix-recommender-webapp" target="_blank" rel="noopener">View on GitHub →</a>
+          <a class="card-link demo" href="https://netflix-recommender-webapp-anj9grsews6wzhucdqedln.streamlit.app" target="_blank" rel="noopener">Live demo →</a>
         </div>
-        <a class="card-link" href="https://github.com/sanjaysakthirajan-jpg/netflix-recommender-webapp" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
 
       <div class="card reveal">
         <div class="br"></div>
         <div class="card-tag">SPEC — 04 / OPERATIONAL ANALYTICS</div>
         <h3>Customer Ticket Analysis</h3>
+        <div class="stack">
+          <span>Python</span><span>SQL</span><span>Pandas</span><span>SLA Analysis</span><span>Data Viz</span>
+        </div>
         <p>
           Analysis of customer support ticket data to evaluate SLA compliance and resolution
           performance — resolution-time calculations, delay/violation detection, and priority-level
           comparisons, visualized to surface operational bottlenecks.
         </p>
-        <div class="stack">
-          <span>Python</span><span>SQL</span><span>Pandas</span><span>SLA Analysis</span><span>Data Viz</span>
-        </div>
         <a class="card-link" href="https://github.com/sanjaysakthirajan-jpg/customer-ticket-analysis" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
 
@@ -454,16 +571,16 @@ footer {
         <dd><a href="mailto:sanjaysakthirajan@gmail.com">sanjaysakthirajan@gmail.com</a></dd>
       </div>
       <div class="contact-item">
-        <dt>PHONE</dt>
-        <dd><a href="tel:+17632157974">+1 763 215 7974</a></dd>
-      </div>
-      <div class="contact-item">
         <dt>LINKEDIN</dt>
         <dd><a href="https://www.linkedin.com/in/sanjay-sakthirajan-5b8818381/" target="_blank" rel="noopener">sanjay-sakthirajan</a></dd>
       </div>
       <div class="contact-item">
         <dt>GITHUB</dt>
         <dd><a href="https://github.com/sanjaysakthirajan-jpg" target="_blank" rel="noopener">sanjaysakthirajan-jpg</a></dd>
+      </div>
+      <div class="contact-item">
+        <dt>PORTFOLIO</dt>
+        <dd><a href="https://sanjaysakthirajan-jpg.github.io/" target="_blank" rel="noopener">sanjaysakthirajan-jpg.github.io</a></dd>
       </div>
     </dl>
     <footer>© 2026 SANJAY SAKTHIRAJAN — BUILT WITH PYTHON, DATA, AND A LITTLE HTML.</footer>
@@ -476,23 +593,6 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.15 });
 revealEls.forEach(el => io.observe(el));
-
-const counters = document.querySelectorAll('.stat-num');
-counters.forEach(el => {
-  const target = parseInt(el.getAttribute('data-count'), 10);
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) { el.textContent = target; return; }
-  let current = 0;
-  const duration = 900;
-  const stepTime = 40;
-  const steps = duration / stepTime;
-  const increment = target / steps;
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) { current = target; clearInterval(timer); }
-    el.textContent = Math.round(current);
-  }, stepTime);
-});
 </script>
 
 </body>
